@@ -1,21 +1,27 @@
-<?php include 'config/config.php'; ?>
-<?php include 'lib/Database.php'; ?>
-<?php include 'helpers/Format.php'; ?>
 <?php include 'inc/header.php'; ?>
 <?php include 'inc/slider.php'; ?>
 
 
-<?php
-$db = new Database();
-$fm = new Format();
-?>
-
 
 <div class="contentsection contemplete clear">
 	<div class="maincontent clear">
-
+		<!-- pagination -->
 		<?php
-		$query = "SELECT * FROM tbl_post";
+		$limit = 2;
+		if (isset($_GET['page'])) {
+			$page = $_GET['page'];
+			if ($page < 1) {
+				$page = 1;
+			}
+		}
+		else {
+			$page = 1;
+		}
+		$start_from = ($page -1) * $limit;
+		// we can do this too $start_from = ( $page *$limit ) - $limit; same result will produce;
+		?>
+		<?php
+		$query = "SELECT * FROM tbl_post LIMIT $start_from, $limit";
 		$post = $db->select($query);
 		if ($post) {
 			while ($result = $post->fetch_assoc()) {
@@ -31,13 +37,29 @@ $fm = new Format();
 				</div>
 				<?php
 			}  //end of while
-		}
+
+			// pagination
+			$query1 = "SELECT  * FROM tbl_post";
+			$result = $db->select($query1);
+			$total_rows = mysqli_num_rows($result);
+			$total_pages = ceil($total_rows/$limit);
+			?>
+			<span class='pagination'><a href='index.php?page=<?php echo $page-1; ?>'>Previous Page</a>
+				<?php
+				for ($i=1; $i <=$total_pages ; $i++) {
+					?>
+					<a href='index.php?page=<?php echo $i; ?>'><?php echo $i; ?></a>
+					<?php
+				}
+				?>
+				<a href='index.php?page=<?php echo $page+1; ?>'>Next Page</a>
+			</span>
+			<?php
+		}    //end of if
 		else{
 			header("Location:404.php");
 		}
 		?>
-
-
 
 
 	</div>
