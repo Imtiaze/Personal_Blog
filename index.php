@@ -1,13 +1,11 @@
 <?php include 'inc/header.php'; ?>
 <?php include 'inc/slider.php'; ?>
 
-
-
 <div class="contentsection contemplete clear">
 	<div class="maincontent clear">
 		<!-- pagination -->
 		<?php
-		$limit = 2;
+		$limit = 3;
 		if (isset($_GET['page'])) {
 			$page = $_GET['page'];
 			if ($page < 1) {
@@ -60,8 +58,6 @@
 			header("Location:404.php");
 		}
 		?>
-
-
 	</div>
 	<?php include 'inc/sidebar.php'; ?>
 </div>
