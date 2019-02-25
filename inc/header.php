@@ -61,9 +61,9 @@ $fm = new Format();
         <a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
       </div>
       <div class="searchbtn clear">
-        <form action="" method="post">
+        <form action="search.php" method="GET">
           <input type="text" name="keyword" placeholder="Search keyword..."/>
-          <input type="submit" name="submit" value="Search"/>
+          <input type="submit" name="search" value="Search"/>
         </form>
       </div>
     </div>
