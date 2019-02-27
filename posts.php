@@ -28,7 +28,7 @@
       }
     }
     else{
-      header("Location:404.php");
+      echo "<span class='error'>There is no post in this category !!!</span>";
     }
     ?>
   </div>
