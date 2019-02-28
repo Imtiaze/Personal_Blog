@@ -20,7 +20,7 @@ else{
 					?>
 					<h2><?php echo $resultPost['title']; ?></h2>
 					<h4><?php echo $fm->formatDate($resultPost['date']); ?>, By <a href="#"><?php echo $resultPost['author']; ?></a></h4>
-					<img src="admin/upload/<?php echo $resultPost['image']; ?>" alt="MyImage"/>
+					<img src="admin/<?php echo $resultPost['image']; ?>" alt="MyImage"/>
 					<p><?php echo $resultPost['body']; ?></p>
 					<div class="relatedpost clear">
 						<h2>Related articles</h2>
@@ -31,7 +31,7 @@ else{
 						if ($relatedPost) {
 							while($resultCatetory = $relatedPost->fetch_assoc()){
 								?>
-								<a href="post.php?id=<?php echo $resultCatetory['id']; ?>"><img src="admin/upload/<?php echo $resultCatetory['image']; ?>" alt="post image"/></a>
+								<a href="post.php?id=<?php echo $resultCatetory['id']; ?>"><img src="admin/<?php echo $resultCatetory['image']; ?>" alt="post image"/></a>
 								<?php
 							}
 						}

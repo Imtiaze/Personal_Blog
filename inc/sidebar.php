@@ -30,7 +30,7 @@
         ?>
         <div class="popular clear">
           <h3><a href="post.php?id=<?php echo $resultLatestPost['id']; ?>"><?php echo $resultLatestPost['title']; ?></a></h3>
-          <a href="post.php?id=<?php echo $resultLatestPost['id']; ?>"><img src="admin/upload/<?php echo $resultLatestPost['image']; ?>" alt="post image"/></a>
+          <a href="post.php?id=<?php echo $resultLatestPost['id']; ?>"><img src="admin/<?php echo $resultLatestPost['image']; ?>" alt="post image"/></a>
           <p><?php echo $fm->formatPost($resultLatestPost['body'], 110); ?></p>
         </div>
         <?php
