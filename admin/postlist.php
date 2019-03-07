@@ -21,10 +21,9 @@
         </thead>
         <tbody>
           <?php
-          $query = "SELECT tbl_post.*, tbl_category.name FROM tbl_post
-                    INNER JOIN tbl_category
-                    ON tbl_post.cat = tbl_category.id
-                    ORDER BY tbl_post.id DESC";
+          $query = "SELECT tbl_post.*, tbl_category.name FROM tbl_post INNER JOIN tbl_category ON tbl_post.cat = tbl_category.id
+          ORDER BY tbl_post.id DESC";
+
           $resultPost = $db->select($query);
           if ($resultPost) {
             while ($result = $resultPost->fetch_assoc()) {
@@ -38,16 +37,17 @@
                 <td><?php echo $result['author']; ?></td>
                 <td><?php echo $result['tags']; ?></td>
                 <td ><?php echo $fm->formatDate($result['date']); ?></td>
-                <td><a href="">Edit</a> || <a href="">Delete</a></td>
+                <td>
+                  <a href="editpost.php?editid=<?php echo $result['id']; ?>">Edit</a> ||
+                  <a onclick="return confirm('Are you  Sure to Delete ?');" href="deletepost.php?delid=<?php echo $result['id']; ?>">Delete</a>
+                </td>
               </tr>
               <?php
             }
           }
-
           ?>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>

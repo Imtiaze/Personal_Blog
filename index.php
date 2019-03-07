@@ -19,7 +19,7 @@
 		// we can do this too $start_from = ( $page *$limit ) - $limit; same result will produce;
 		?>
 		<?php
-		$query = "SELECT * FROM tbl_post LIMIT $start_from, $limit";
+		$query = "SELECT * FROM tbl_post ORDER BY id DESC LIMIT $start_from, $limit  ";
 		$post = $db->select($query);
 		if ($post) {
 			while ($result = $post->fetch_assoc()) {

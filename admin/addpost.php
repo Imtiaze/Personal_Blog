@@ -28,7 +28,7 @@
         $image_unique_name =  substr(md5(time()),0,10).'.'.$image_extension;
         $uploaded_image='upload/'.$image_unique_name;
 
-        if (empty($cat) || empty($body) || empty($title) || empty($author) || empty($tag)) {
+        if (empty($cat) || empty($body) || empty($title) || empty($author) || empty($tag) || empty($image_name)) {
           echo "<span class='error'>Filed should not be Empty !<span/>";
         }
         elseif($image_size > 1048576) {  //1048576 bytes = 1MB
