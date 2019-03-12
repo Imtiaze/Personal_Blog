@@ -9,8 +9,8 @@
         <thead>
           <tr>
             <th width="5%">Post No</th>
-            <th width="10%">Post Title</th>
-            <th width="20%">Description</th>
+            <th width="15%">Post Title</th>
+            <th width="15%">Description</th>
             <th width="10%">Category</th>
             <th width="10%">Image</th>
             <th width="10%">Author</th>
@@ -33,7 +33,7 @@
                 <td><?php echo $result['title']; ?></td>
                 <td><?php echo $fm->formatPost($result['body'], 80); ?></td>
                 <td><?php echo $result['name']; ?></td>
-                <td> <img src="<?php echo $result['image']; ?>" alt="" height="70" width="90"> </td>
+                <td> <img src="<?php echo $result['image']; ?>" alt="" height="60" width="80"> </td>
                 <td><?php echo $result['author']; ?></td>
                 <td><?php echo $result['tags']; ?></td>
                 <td ><?php echo $fm->formatDate($result['date']); ?></td>
