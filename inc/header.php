@@ -64,13 +64,24 @@ $fm = new Format();
 
       </div>
     </a>
-    <div class="social clear">
-      <div class="icon clear">
-        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
-      </div>
+    <?php
+    $socialQuery = "SELECT * FROM tbl_social WHERE id='1' ";
+    $resutlSocialQuery = $db->select($socialQuery);
+    if ($resutlSocialQuery) {
+      while($socialResultQuery = $resutlSocialQuery->fetch_assoc()){
+        ?>
+        <div class="social clear">
+          <div class="icon clear">
+            <a href ="<?php echo $socialResultQuery['facebook']; ?>" target="_blank" ><i class="fa fa-facebook"></i></a>
+            <a href ="<?php echo $socialResultQuery['twitter']; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href ="<?php echo $socialResultQuery['linkedin']; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href ="<?php echo $socialResultQuery['google']; ?>" target="_blank"><i class="fa fa-google-plus"></i></a>
+          </div>
+
+          <?php
+        }
+      }
+      ?>
       <div class="searchbtn clear">
         <form action="search.php" method="GET">
           <input type="text" name="keyword" placeholder="Search keyword..."/>
