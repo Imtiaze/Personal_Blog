@@ -95,5 +95,18 @@ $fm = new Format();
       <li><a id="active" href="index.php">Home</a></li>
       <li><a href="about.php">About</a></li>
       <li><a href="contact.php">Contact</a></li>
+
+      <?php
+      $query = "SELECT * FROM tbl_page";
+      $queryResult = $db->select($query);
+      if ($queryResult) {
+        while ($result = $queryResult->fetch_assoc()) {
+          ?>
+          <li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a></li>
+          <?php
+        }
+      }
+      ?>
+
     </ul>
   </div>
