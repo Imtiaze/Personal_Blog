@@ -23,6 +23,23 @@ class Format {
     return $data;
   }
 
+  public function title(){
+    $path = $_SERVER['SCRIPT_NAME'];
+    $title = basename($path, '.php');
+    //$title = str_replace('_','','$title');
+
+    if($title == 'index'){
+      $title = 'home';
+    }
+    elseif ($title == 'contact') {
+      $title = 'contact';
+    }
+    elseif ($title == 'about') {
+      $title = 'about';
+    }
+    return ucwords($title);
+  }
+
 
 
 }
