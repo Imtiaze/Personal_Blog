@@ -125,8 +125,15 @@ $fm = new Format();
     </div>
   </div>
   <div class="navsection templete">
+    <?php
+    $path =$_SERVER['SCRIPT_NAME'];
+    $title = basename($path, '.php');
+    ?>
     <ul>
-      <li><a id="active" href="index.php">Home</a></li>
+      <li><a href="index.php"
+        <?php if($title=='index'){echo 'id="active"';} ?>
+        >Home</a>
+      </li>
 
       <?php
       $query = "SELECT * FROM tbl_page";
@@ -134,13 +141,28 @@ $fm = new Format();
       if ($queryResult) {
         while ($result = $queryResult->fetch_assoc()) {
           ?>
-          <li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a></li>
+          <li>
+            <a href="page.php?pageid=<?php echo $result['id']; ?>"
+              <?php
+              if (isset($_GET['pageid']) && $_GET['pageid'] == $result['id']) {
+                echo 'id="active"';
+              }
+              ?> >
+              <?php echo $result['name']; ?>
+            </a>
+          </li>
           <?php
         }
       }
       ?>
-      <li><a href="about.php">About</a></li>
-      <li><a href="contact.php">Contact</a></li>
+      <li><a href="about.php"
+        <?php if($title=='about'){echo 'id="active"';} ?>
+        >About</a>
+      </li>
+      <li><a href="contact.php"
+        <?php if($title=='contact'){echo 'id="active"';} ?>
+        >Contact</a>
+      </li>
 
 
     </ul>
