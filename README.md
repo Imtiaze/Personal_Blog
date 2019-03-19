@@ -1,7 +1,7 @@
 # Personal_Blog
 A Project of Personal Blogging !
 
-Procedure of Installation
+# Procedure of Installation
 
 * git clone https://github.com/Imtiaze/Personal_Blog.git or download manually
 * put all the file in the localhost folder
