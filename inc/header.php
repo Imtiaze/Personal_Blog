@@ -45,9 +45,30 @@ $fm = new Format();
   ?>
 
 
+  <?php
+  if (isset($_GET['id'])) {
+    $postid = $_GET['id'];
+    $query = "SELECT * FROM tbl_post WHERE id='$postid' ";
+    $resutlQuery = $db->select($query);
+    if ($resutlQuery) {
+      while($result = $resutlQuery->fetch_assoc()){
+        ?>
+        <meta name="keywords" content="<?php echo $result['tags']; ?>">
+        <?php
+      }
+    }
+  }
+  else{
+    ?>
+    <meta name="keywords" content="<?php echo KEYWORDS; ?>">
+    <?php
+  }
+
+  ?>
+
   <meta name="language" content="English">
   <meta name="description" content="It is a website about education">
-  <meta name="keywords" content="blog,cms blog">
+
   <meta name="author" content="Delowar">
   <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">
   <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
